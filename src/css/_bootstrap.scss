@@ -1,0 +1,19 @@
+#bootstrap {
+	@import '../../node_modules/bootstrap/scss/functions.scss';
+	@import '../../node_modules/bootstrap/scss/variables.scss';
+	@import '../../node_modules/bootstrap/scss/mixins.scss';
+	@import '../../node_modules/bootstrap/scss/reboot';
+	@import '../../node_modules/bootstrap/scss/forms';
+}
+
+#bootstrap > form {
+	color: #212529;
+	background-color: white;
+	padding: 3rem var(--rsx) 6rem;
+	border-radius: 1rem;
+	border: 1px solid var(--line);
+}
+
+#bootstrap .mb-3 {
+	margin-bottom: 1rem !important;
+}

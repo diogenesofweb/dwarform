@@ -1,0 +1,15 @@
+#bulma {
+	// @import '../../node_modules/bulma/bulma.sass';
+	@import '../../node_modules/bulma/sass/utilities/_all.sass';
+	@import '../../node_modules/bulma/sass/base/_all.sass';
+	// @import "../../node_modules/bulma/sass/elements/button.sass";
+	@import '../../node_modules/bulma/sass/form/_all.sass';
+}
+
+#bulma > form {
+	color: #212529;
+	background-color: white;
+	padding: 3rem var(--rsx) 6rem;
+	border-radius: 1rem;
+	border: 1px solid var(--line);
+}

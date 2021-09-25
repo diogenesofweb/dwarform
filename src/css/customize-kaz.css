@@ -1,0 +1,8 @@
+form.form .field :is(input, select, textarea) {
+	/* margin-top: 0.33rem; */
+	padding: 0.33rem 0;
+}
+
+#modal::-webkit-scrollbar-thumb {
+	border-color: transparent !important;
+}
