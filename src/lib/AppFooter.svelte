@@ -12,7 +12,7 @@
 
 		<div>
 			<a
-				href="https://github.com/diogeenesofweb/dwarform"
+				href="https://github.com/diogenesofweb/dwarform"
 				aria-label="link to repo"
 				target="_blank"
 				rel="noopener noreferrer"
