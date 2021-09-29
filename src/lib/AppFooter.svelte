@@ -6,7 +6,7 @@
 	<section>
 		<div>
 			<Name />
-			<p>HTML form generator (Svelte & Vue)</p>
+			<p>Svelte, Vue, HTML form builder</p>
 			<p>Usable with Bootstrap.css and Bulma.css</p>
 		</div>
 

@@ -32,7 +32,10 @@
 
 <svelte:head>
 	<title>Dwarform</title>
-	<meta name="description" content="Svelte, Vue, HTML form generator" />
+	<meta
+		name="description"
+		content="Generate Svelte, Vue, HTML code snippets for making forms with Bootstrap, Bulma or custom CSS"
+	/>
 </svelte:head>
 
 <DataLists />
