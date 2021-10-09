@@ -13,6 +13,7 @@
 	import MenuBoard from '$lib/MenuBoard.svelte';
 	import MyLibComponents from '$lib/MyLibComponents.svelte';
 	import MyCSS from '$lib/MyCSS.svelte';
+	import SwitchForms from '$lib/SwitchForms.svelte';
 
 	import { tech, styledBy, componentize, fields } from '../store/store';
 
@@ -36,6 +37,7 @@
 		name="description"
 		content="Generate Svelte, Vue, HTML code snippets for making forms with Bootstrap, Bulma or custom CSS"
 	/>
+	<link rel="canonical" href="https://dwarform.delphic.top/" />
 </svelte:head>
 
 <DataLists />
@@ -49,8 +51,10 @@
 <div class="container alpha">
 	<aside>
 		<div class="btns">
-			<Btn accent="alpha" classic on:click={onCreateNewForm}>create new form</Btn>
+			<SwitchForms />
 			<Btn accent="beta" classic on:click={onUpdateForm}>update form</Btn>
+			<span class="tac">~</span>
+			<Btn accent="alpha" classic on:click={onCreateNewForm}>create new form</Btn>
 		</div>
 
 		<MenuBoard />

@@ -1,13 +1,22 @@
 /** @typedef { import("../typings/types").Field } Field*/
 import { derived, writable } from 'svelte/store';
+// import { browser } from '$app/env';
 import example from '../data/example';
+
 import { TECH, STYLEDBY } from '../data/constants';
 import { generateCode } from '../utils/generateCode';
 
-/** @type {Field[]} */
-let arr = example;
+const init = {
+	forms: ['example'],
+	name: 'example',
+	/** @type {Field[]} */
+	fields: example
+};
 
-export const fields = writable(arr);
+export const forms = writable(init.forms);
+export const activeForm = writable(init.name);
+
+export const fields = writable(init.fields);
 
 export const tech = writable(TECH[0]);
 

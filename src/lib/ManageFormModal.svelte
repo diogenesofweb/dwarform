@@ -1,10 +1,10 @@
 <script>
 	/** @typedef { import("../typings/types").Field } Field*/
 
-	import { Btn, Icon } from '@kazkadien/svelte';
+	import { Btn, Field, Icon } from '@kazkadien/svelte';
 	import FieldEntry from '$lib/FieldEntry.svelte';
 
-	import { fields } from '../store/store';
+	import { fields, forms, activeForm } from '../store/store';
 
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
@@ -47,9 +47,49 @@
 
 	let fieldEntries = is_update ? [...$fields] : [makeField()];
 
+	let formName = '';
+
 	function handleSubmit() {
 		// console.log(fieldEntries);
 		fields.set(fieldEntries);
+		is_update ? update() : create();
+
+		dispatch('close');
+	}
+
+	function create() {
+		console.log('create', formName);
+		activeForm.set(formName);
+		forms.update((prev) => [...prev, formName]);
+		localStorage.setItem(formName, JSON.stringify(fieldEntries));
+
+		const savedForms = localStorage.getItem('FORMS');
+		let saved = [];
+		if (savedForms) {
+			saved = JSON.parse(savedForms);
+		}
+		localStorage.setItem('FORMS', JSON.stringify([...saved, formName]));
+	}
+
+	function update() {
+		console.log('update', $activeForm);
+		localStorage.setItem($activeForm, JSON.stringify(fieldEntries));
+	}
+
+	function removeForm() {
+		const formToDel = $activeForm;
+		console.log('remove', formToDel);
+
+		forms.update((prev) => prev.filter((f) => f !== formToDel));
+		localStorage.removeItem(formToDel);
+
+		activeForm.set($forms[0]);
+
+		const savedForms = JSON.parse(localStorage.getItem('FORMS')) || [];
+		let toSave = savedForms.filter((f) => f !== formToDel);
+
+		localStorage.setItem('FORMS', JSON.stringify(toSave));
+
 		dispatch('close');
 	}
 
@@ -77,6 +117,14 @@
 		</Btn>
 	</div>
 
+	{#if !is_update}
+		<div class="form-name">
+			<Field label="Form Name" accent="gamma">
+				<input type="text" bind:value={formName} />
+			</Field>
+		</div>
+	{/if}
+
 	{#each fieldEntries as field, i (field.id)}
 		<div class="my-field">
 			<FieldEntry {field} />
@@ -93,8 +141,11 @@
 		</div>
 	{/each}
 
-	<div class="fce" style="margin: 5rem 0;">
+	<div class="fse g1 rpx" style="margin: 5rem 0;">
 		<Btn classic type="submit">Done</Btn>
+		{#if is_update}
+			<Btn classic accent="danger" on:click={removeForm}>Delete Form</Btn>
+		{/if}
 	</div>
 </form>
 
@@ -108,6 +159,11 @@
 	.header {
 		padding: 0.33rem var(--rsx);
 		border-bottom: 2px solid var(--line);
+	}
+
+	.form-name {
+		padding: 1.5rem var(--rsx) 2rem;
+		background-color: var(--bg-darker);
 	}
 
 	.my-field {
