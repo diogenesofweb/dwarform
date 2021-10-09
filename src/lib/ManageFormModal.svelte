@@ -1,11 +1,10 @@
 <script>
 	/** @typedef { import("../typings/types").Field } Field*/
 
-	import { Btn, Field, Icon } from '@kazkadien/svelte';
+	import { Btn, Field, Icon, Toast } from '@kazkadien/svelte';
 	import FieldEntry from '$lib/FieldEntry.svelte';
 
 	import { fields, forms, activeForm } from '../store/store';
-
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
@@ -44,6 +43,7 @@
 	}
 
 	// console.log(JSON.stringify(makeField()));
+	let toasts = '';
 
 	let fieldEntries = is_update ? [...$fields] : [makeField()];
 
@@ -51,6 +51,12 @@
 
 	function handleSubmit() {
 		// console.log(fieldEntries);
+		if (!is_update && !formName) {
+			console.error('no form name');
+			toasts = 'Enter form name';
+			return;
+		}
+
 		fields.set(fieldEntries);
 		is_update ? update() : create();
 
@@ -108,6 +114,12 @@
 	}
 </script>
 
+{#if toasts}
+	<Toast accent="danger" autoclose={3000} on:close={() => (toasts = '')}>
+		<p>{toasts}</p>
+	</Toast>
+{/if}
+
 <form class="form alpha" on:submit|preventDefault={handleSubmit}>
 	<div class="fsb header">
 		<h1>{is_update ? 'Update' : 'Compose'}</h1>
@@ -120,7 +132,7 @@
 	{#if !is_update}
 		<div class="form-name">
 			<Field label="Form Name" accent="gamma">
-				<input type="text" bind:value={formName} />
+				<input type="text" bind:value={formName} required />
 			</Field>
 		</div>
 	{/if}
