@@ -1,4 +1,5 @@
 import ATTRS from '../../data/attrs';
+import toCamelCase from '../toCamelCase';
 const checkIcon = `<div class="icon-holder"><svg viewBox="0 0 24 24"><use href="#check"></use></svg></div>`;
 const circleIcon = `<div class="icon-holder round"><svg viewBox="0 0 24 24"><use href="#circle"></use></svg></div>`;
 
@@ -15,7 +16,7 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 	const is_plus = is_svelte || is_vue;
 
 	fields.forEach((f) => {
-		const _label = f.label.toLocaleLowerCase().replaceAll(/[^a-z]/g, '_');
+		const _label = toCamelCase(f.label);
 
 		let attributes = '';
 		let values = [];

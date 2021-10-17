@@ -1,4 +1,5 @@
 import ATTRS from '../../data/attrs';
+import toCamelCase from '../toCamelCase';
 
 /**
  * @param {import("../../typings/types").Field[]} fields
@@ -13,7 +14,7 @@ export function composeBootstrap(fields, { is_svelte = false, is_vue = false }) 
 	const is_plus = is_svelte || is_vue;
 
 	fields.forEach((f) => {
-		const _label = f.label.toLocaleLowerCase().replaceAll(/[^a-z]/g, '_');
+		const _label = toCamelCase(f.label);
 		const id = 'b-' + Math.random().toString().slice(-4);
 
 		let attributes = '';
