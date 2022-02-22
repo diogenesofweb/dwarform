@@ -52,9 +52,9 @@
 	<aside>
 		<div class="btns">
 			<SwitchForms />
-			<Btn accent="beta" classic on:click={onUpdateForm}>update form</Btn>
+			<Btn accent="beta" filled on:click={onUpdateForm} text="update form" />
 			<span class="tac">~</span>
-			<Btn accent="alpha" classic on:click={onCreateNewForm}>create new form</Btn>
+			<Btn accent="alpha" filled on:click={onCreateNewForm} text="create new form" />
 		</div>
 
 		<MenuBoard />

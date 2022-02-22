@@ -1,14 +1,13 @@
 <script>
-	/** @typedef { import("../typings/types").Field } Field*/
-	/** @typedef { import("../typings/types").Attributes } Attributes*/
 	import { Field } from '@kazkadien/svelte';
 	import attrs from '../data/attrs';
 
 	const TYPES = Object.keys(attrs).sort();
-	/** @type {Field} */
+
+	/** @type { import("../typings/types").Field }*/
 	export let field;
 
-	/** @type {Attributes} */
+	/** @type { import("../typings/types").Attributes } */
 	let xx;
 
 	$: {

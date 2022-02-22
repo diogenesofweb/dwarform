@@ -4,11 +4,11 @@
 	import { fields } from '../store/store';
 
 	function handleSubmit(e) {
-		console.log('some values may be incorrect');
+		// console.log('some values may be incorrect');
 		const formData = new FormData(e.target);
 		// @ts-ignore
 		const form = Object.fromEntries(formData);
-		console.log(form);
+		// console.log(form);
 	}
 </script>
 
@@ -78,7 +78,7 @@
 			{/if}
 		{/each}
 		<div class="fce" style="margin: 3rem 0 1rem;">
-			<Btn accent="alpha" classic type="submit" title="console.log" />
+			<Btn accent="alpha" filled type="submit" text="console.log" />
 		</div>
 	</div>
 </form>

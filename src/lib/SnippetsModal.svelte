@@ -56,7 +56,7 @@
 			<span>Copy To Clipboard</span>
 		</Btn>
 
-		<Btn accent="danger" outlined icony classic on:click={() => dispatch('close')}>
+		<Btn accent="danger" outlined iconOnly filled on:click={() => dispatch('close')}>
 			<MyIcon name="close" />
 		</Btn>
 	</div>

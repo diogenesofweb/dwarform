@@ -1,6 +1,4 @@
 <script>
-	/** @typedef { import("../typings/types").Field } Field*/
-
 	import { Btn, Field, Icon, Toast } from '@kazkadien/svelte';
 	import FieldEntry from '$lib/FieldEntry.svelte';
 
@@ -11,7 +9,7 @@
 	export let is_update = false;
 
 	function makeField() {
-		/** @type {Field} */
+		/** @type { import("../typings/types").Field }*/
 		const field = {
 			id: Math.random(),
 
@@ -64,7 +62,7 @@
 	}
 
 	function create() {
-		console.log('create', formName);
+		// console.log('create', formName);
 		activeForm.set(formName);
 		forms.update((prev) => [...prev, formName]);
 		localStorage.setItem(formName, JSON.stringify(fieldEntries));
@@ -78,13 +76,13 @@
 	}
 
 	function update() {
-		console.log('update', $activeForm);
+		// console.log('update', $activeForm);
 		localStorage.setItem($activeForm, JSON.stringify(fieldEntries));
 	}
 
 	function removeForm() {
 		const formToDel = $activeForm;
-		console.log('remove', formToDel);
+		// console.log('remove', formToDel);
 
 		forms.update((prev) => prev.filter((f) => f !== formToDel));
 		localStorage.removeItem(formToDel);
@@ -99,12 +97,14 @@
 		dispatch('close');
 	}
 
+	/** @param {number} idx */
 	function onAdd(idx) {
 		// console.log({ idx });
 		fieldEntries.splice(idx + 1, 0, makeField());
 		fieldEntries = fieldEntries;
 	}
 
+	/** @param {number} idx */
 	function onDelete(idx) {
 		// console.log({ idx });
 		fieldEntries.splice(idx, 1);
@@ -124,7 +124,7 @@
 	<div class="fsb header">
 		<h1>{is_update ? 'Update' : 'Compose'}</h1>
 
-		<Btn accent="danger" classic icony on:click={() => dispatch('close')}>
+		<Btn accent="danger" filled iconOnly on:click={() => dispatch('close')}>
 			<Icon name="close" />
 		</Btn>
 	</div>
@@ -142,11 +142,11 @@
 			<FieldEntry {field} />
 
 			<div class="btns">
-				<Btn accent="danger" classic icony on:click={() => onDelete(i)}>
+				<Btn accent="danger" filled iconOnly on:click={() => onDelete(i)}>
 					<Icon name="remove" />
 				</Btn>
 
-				<Btn accent="gamma" classic icony on:click={() => onAdd(i)}>
+				<Btn accent="gamma" filled iconOnly on:click={() => onAdd(i)}>
 					<Icon name="add" />
 				</Btn>
 			</div>
@@ -154,9 +154,9 @@
 	{/each}
 
 	<div class="fse g1 rpx" style="margin: 5rem 0;">
-		<Btn classic type="submit">Done</Btn>
+		<Btn filled type="submit" text="Done" />
 		{#if is_update}
-			<Btn classic accent="danger" on:click={removeForm}>Delete Form</Btn>
+			<Btn filled accent="danger" on:click={removeForm} text="Delete Form" />
 		{/if}
 	</div>
 </form>

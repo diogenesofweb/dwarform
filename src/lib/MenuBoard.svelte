@@ -63,8 +63,8 @@
 		{/if}
 
 		<div class="fdc">
-			<Btn accent="danger" classic on:click={onShowMeCode}>
-				<span>Show me some code</span>
+			<Btn accent="danger" filled on:click={onShowMeCode} text="">
+				<b>Show me some code</b>
 				<MyIcon name="code" />
 			</Btn>
 		</div>

@@ -1,5 +1,5 @@
 <script>
-	import '@kazkadien/svelte/css/_all.css';
+	import '@kazkadien/svelte/css/all.css';
 
 	import '../css/app.css';
 	import '../css/custom-colors.css';

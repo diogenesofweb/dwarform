@@ -9,8 +9,8 @@
 			<Name />
 		</div>
 
-		<Dropdown accent="" icony alignRight hoverable>
-			<Icon name="brightness_low" slot="title" />
+		<Dropdown accent="" iconOnly alignRight hoverable>
+			<Icon name="brightness_low" slot="dropbtn" />
 			<ThemeSelect heading="Theme" />
 		</Dropdown>
 	</section>

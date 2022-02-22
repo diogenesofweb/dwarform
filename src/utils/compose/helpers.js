@@ -8,5 +8,5 @@ function handleSubmit(e) {
 `;
 
 export const HTMLSubmitButton = `
-<button class="btn classic" type="submit" style="margin: 3rem auto 0" >console.log</button>
+<button class="btn filled" type="submit" style="margin: 3rem auto 0" >console.log</button>
 `;
