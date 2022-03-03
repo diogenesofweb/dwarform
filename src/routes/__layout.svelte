@@ -7,6 +7,7 @@
 
 	import AppHeader from '$lib/AppHeader.svelte';
 	import AppFooter from '$lib/AppFooter.svelte';
+	import StopWar from '$lib/StopWar.svelte';
 </script>
 
 <div id="view">
@@ -19,7 +20,13 @@
 	<AppFooter />
 </div>
 
+<StopWar />
+
 <style>
+	:global(#svelte) {
+		position: relative;
+	}
+
 	#view {
 		min-height: 100vh;
 		display: grid;
