@@ -1,9 +1,5 @@
 <section id="stop-war">
-	<a
-		href="https://ukraine.ua/news/stand-with-ukraine/"
-		target="_blank"
-		rel="noopener noreferrer"
-	>
+	<a href="https://ukraine.ua/news/stand-with-ukraine/" target="_blank" rel="noopener noreferrer">
 		<span>STOP WAR. STAND WITH UKRAINE 🇺🇦</span>
 	</a>
 </section>
@@ -16,7 +12,7 @@
 		right: 0;
 		padding: 1rem;
 		background-color: black;
-		font-size: 16px;
+		/* font-size: 16px; */
 		text-align: center;
 	}
 

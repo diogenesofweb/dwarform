@@ -63,7 +63,7 @@
 		{/if}
 
 		<div class="fdc">
-			<Btn accent="danger" filled on:click={onShowMeCode} text="">
+			<Btn accent="danger" on:click={onShowMeCode} text="">
 				<b>Show me some code</b>
 				<MyIcon name="code" />
 			</Btn>
@@ -77,7 +77,7 @@
 	}
 
 	form .field-group {
-		background-color: var(--bg-darker);
+		/* background-color: var(--bg1); */
 		display: grid;
 		gap: 1rem;
 		border-color: var(--line);

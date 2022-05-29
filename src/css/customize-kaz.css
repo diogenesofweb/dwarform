@@ -6,3 +6,20 @@ form.form .field :is(input, select, textarea) {
 #modal::-webkit-scrollbar-thumb {
 	border-color: transparent !important;
 }
+
+body {
+	--bg-1: var(--bg1);
+	--bg-2: var(--bg2);
+
+	--fg-t: var(--fga); /* translucent */
+	--fg-tl: var(--fga); /* translucent */
+
+	--br-s: 0.33rem; /* border-radius-small */
+	--br-m: 1rem;
+	--br-l: 3rem;
+
+	--scrollbar-thumb: var(--fga);
+	--scrollbar-thumb: hsl(0 0% 30% / 0.65);
+	--scrollbar-thumb-hover: var(--fg-alpha);
+	--scrollbar-width: 1ch;
+}

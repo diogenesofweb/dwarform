@@ -1,5 +1,5 @@
 <script>
-	import { AccordionItem } from '@kazkadien/svelte';
+	import { Dtl } from '@kazkadien/svelte';
 	import Prism from 'prismjs';
 	import { MY_COMPONENTS } from '../data/constants';
 
@@ -8,11 +8,7 @@
 	});
 
 	const code = `
-	import '@kazkadien/svelte/css/_vars.css'
-	import '@kazkadien/svelte/css/form.css'
 	import { Field, BoxField, BoxFieldEntry } from "@kazkadien/svelte";
-	
-	// import '@kazkadien/svelte/css/button.css'
 	// import { Btn } from "@kazkadien/svelte";
 	`;
 	let html = Prism.highlight(code, Prism.languages.javascript, 'javascript');
@@ -28,13 +24,13 @@
 
 <h3 class="tac">~ Or Components ~</h3>
 
-<div class="accordion alpha1">
+<div class="dtl-group alpha">
 	{#each snippets as val}
-		<AccordionItem title={val.name} accent="alpha" animate={true} on:toggle>
+		<Dtl heading={val.name}>
 			<pre class="language-html">
         {@html val.snippet}
       </pre>
-		</AccordionItem>
+		</Dtl>
 	{/each}
 </div>
 
@@ -50,10 +46,6 @@
 	}
 
 	:global(html.dark) section {
-		background-color: var(--bg-darker);
-	}
-
-	:global(html.dark) .accordion {
-		background-color: var(--bg-darker);
+		background-color: var(--bg1);
 	}
 </style>

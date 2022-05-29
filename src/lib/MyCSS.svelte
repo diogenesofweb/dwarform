@@ -1,10 +1,14 @@
 <script>
 	import Prism from 'prismjs';
 	const code = `
-	import '@kazkadien/svelte/css/_vars.css'
+  import '@kazkadien/svelte/css/colors.css';
+  import '@kazkadien/svelte/css/global-vars.css';
+  import '@kazkadien/svelte/css/reset.css';
 	import '@kazkadien/svelte/css/form.css'
-
 	// import '@kazkadien/svelte/css/button.css'
+
+  // or
+  import '@kazkadien/svelte/css/all.css'
 	`;
 	let html = Prism.highlight(code, Prism.languages.javascript, 'javascript');
 </script>
@@ -28,6 +32,6 @@
 	}
 
 	:global(html.dark) section {
-		background-color: var(--bg-darker);
+		background-color: var(--bg2);
 	}
 </style>

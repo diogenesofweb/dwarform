@@ -8,7 +8,7 @@
 		const formData = new FormData(e.target);
 		// @ts-ignore
 		const form = Object.fromEntries(formData);
-		// console.log(form);
+		console.log(form);
 	}
 </script>
 
@@ -78,7 +78,7 @@
 			{/if}
 		{/each}
 		<div class="fce" style="margin: 3rem 0 1rem;">
-			<Btn accent="alpha" filled type="submit" text="console.log" />
+			<Btn accent="alpha" type="submit" text="console.log" />
 		</div>
 	</div>
 </form>
@@ -93,7 +93,6 @@
 		width: min(100%, 80ch);
 	}
 	form .field-group {
-		/* background-color: var(--bg-darker); */
 		display: grid;
 		gap: 2rem;
 	}

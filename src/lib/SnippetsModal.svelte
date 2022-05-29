@@ -51,12 +51,12 @@
 
 <div class="card">
 	<div class="header rpx">
-		<Btn accent="gamma" outlined colored on:click={onCopyToClipboard}>
+		<Btn accent="gamma" variant="outlined" colored on:click={onCopyToClipboard}>
 			<MyIcon name="content_copy" />
 			<span>Copy To Clipboard</span>
 		</Btn>
 
-		<Btn accent="danger" outlined iconOnly filled on:click={() => dispatch('close')}>
+		<Btn accent="danger" variant="outlined" iconOnly on:click={() => dispatch('close')}>
 			<MyIcon name="close" />
 		</Btn>
 	</div>
@@ -90,7 +90,7 @@
 		display: grid;
 		grid-template-columns: 1fr auto;
 		gap: 2rem;
-		background-color: var(--bg-darkest);
+		background-color: var(--bg2);
 		border-radius: 1rem 1rem 0 0;
 	}
 
@@ -98,11 +98,10 @@
 		padding: 1rem;
 		overflow: hidden;
 		border-radius: 0 0 1rem 1rem;
-		/* background-color: var(--bg-darker); */
 	}
 
 	:global(html.dark) .content {
-		background-color: var(--bg-darker);
+		background-color: var(--bg2);
 	}
 
 	pre {

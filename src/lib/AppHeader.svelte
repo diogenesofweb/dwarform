@@ -9,7 +9,7 @@
 			<Name />
 		</div>
 
-		<Dropdown accent="" iconOnly alignRight hoverable>
+		<Dropdown accent="base" iconOnly alignRight hoverable>
 			<Icon name="brightness_low" slot="dropbtn" />
 			<ThemeSelect heading="Theme" />
 		</Dropdown>
@@ -18,7 +18,7 @@
 
 <style>
 	#header {
-		background-color: var(--bg-darkest);
+		background-color: var(--bg1);
 		padding: 1.15rem var(--rsx);
 	}
 

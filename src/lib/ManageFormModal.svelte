@@ -124,7 +124,7 @@
 	<div class="fsb header">
 		<h1>{is_update ? 'Update' : 'Compose'}</h1>
 
-		<Btn accent="danger" filled iconOnly on:click={() => dispatch('close')}>
+		<Btn accent="danger" iconOnly on:click={() => dispatch('close')}>
 			<Icon name="close" />
 		</Btn>
 	</div>
@@ -142,11 +142,11 @@
 			<FieldEntry {field} />
 
 			<div class="btns">
-				<Btn accent="danger" filled iconOnly on:click={() => onDelete(i)}>
+				<Btn accent="danger" variant="outlined" iconOnly on:click={() => onDelete(i)}>
 					<Icon name="remove" />
 				</Btn>
 
-				<Btn accent="gamma" filled iconOnly on:click={() => onAdd(i)}>
+				<Btn accent="gamma" variant="outlined" iconOnly on:click={() => onAdd(i)}>
 					<Icon name="add" />
 				</Btn>
 			</div>
@@ -154,9 +154,9 @@
 	{/each}
 
 	<div class="fse g1 rpx" style="margin: 5rem 0;">
-		<Btn filled type="submit" text="Done" />
+		<Btn type="submit" text="Done" />
 		{#if is_update}
-			<Btn filled accent="danger" on:click={removeForm} text="Delete Form" />
+			<Btn accent="danger" on:click={removeForm} text="Delete Form" />
 		{/if}
 	</div>
 </form>
@@ -170,12 +170,13 @@
 
 	.header {
 		padding: 0.33rem var(--rsx);
-		border-bottom: 2px solid var(--line);
+		border-bottom: 2px solid var(--fga);
+		/* background-color: var(--bg1); */
 	}
 
 	.form-name {
 		padding: 1.5rem var(--rsx) 2rem;
-		background-color: var(--bg-darker);
+		background-color: var(--bg1);
 	}
 
 	.my-field {

@@ -8,7 +8,8 @@ export function composeSvelteComponentized(fields) {
 	let add_icons = false;
 	let code = '';
 	let data = '';
-	let arrays = '// import { Field, BoxField, BoxFieldEntry } from "";\n';
+	let vars = '';
+	let arrays = '// import { Field, BoxField, BoxFieldEntry } from "@kazkadien/svelte";\n';
 
 	fields.forEach((f) => {
 		const _label = f.label.toLocaleLowerCase().replaceAll(/[^a-z]/g, '_');
@@ -40,13 +41,15 @@ export function composeSvelteComponentized(fields) {
 
 		if (['checkbox', 'radio'].includes(f.type)) {
 			const arr = values.reduce((p, c) => p + `"${c}",`, '');
-			arrays += `const ${_label} = [${arr}]\n`;
+			arrays += `const __${_label} = [${arr}];\n`;
 
-			data += `\n\t${_label}: ${f.type == 'radio' ? `""` : '[]'},`;
+			// data += `\n\t${_label}: ${f.type == 'radio' ? `""` : '[]'},`;
+			data += `\n\t${_label},`;
+			vars += `let ${_label} = ${f.type == 'radio' ? `""` : '[]'};\n`;
 
-			let boxes = `{#each  ${_label} as val}
+			let boxes = `{#each  __${_label} as val}
 		<BoxFieldEntry type="${f.type}" label="{val}">
-			<input type="${f.type}" ${attributes} bind:group="{data.${_label}}" value="{val}" />
+			<input type="${f.type}" ${attributes} bind:group="{${_label}}" value="{val}" />
 		</BoxFieldEntry>
 		{/each}`;
 
@@ -61,18 +64,20 @@ export function composeSvelteComponentized(fields) {
 
 		if (f.type == 'select') {
 			const arr = values.reduce((p, c) => p + `"${c}",`, '');
-			arrays += `const ${_label} = [${arr}]\n`;
+			arrays += `const __${_label} = [${arr}];\n`;
 
-			data += `\n\t${_label}: "",`;
+			// data += `\n\t${_label}: "",`;
+			data += `\n\t${_label},`;
+			vars += `let ${_label}= "";\n`;
 
 			const options = `
-			{#each ${_label} as val}
+			{#each __${_label} as val}
 			<option value="{val}">{val}</option>
 			{/each}`;
 
 			code += `
 	<Field label="${f.label}">
-		<select bind:value="{data.${_label}}" ${attributes}>
+		<select bind:value="{${_label}}" ${attributes}>
 			<option value=""></option>${options}
 		</select>
 	</Field>
@@ -82,20 +87,24 @@ export function composeSvelteComponentized(fields) {
 		}
 
 		if (f.type == 'textarea') {
-			data += `\n\t${_label}: "${f.value}",`;
+			// data += `\n\t${_label}: "${f.value}",`;
+			data += `\n\t${_label},`;
+			vars += `let ${_label}= "${f.value}";\n`;
 			code += `
 	<Field label="${f.label}">
-		<textarea bind:value="{data.${_label}}" ${attributes}/>
+		<textarea bind:value="{${_label}}" ${attributes}/>
 	</Field>
 `;
 
 			return;
 		}
 
-		data += `\n\t${_label}: "${f.value}",`;
+		// data += `\n\t${_label}: "${f.value}",`;
+		data += `\n\t${_label},`;
+		vars += `let ${_label}= "${f.value}";\n`;
 		code += `
 	<Field label="${f.label}">
-		<input bind:value="{data.${_label}}" type="${f.type}" ${attributes}/>
+		<input bind:value="{${_label}}" type="${f.type}" ${attributes}/>
 	</Field>
 `;
 	});
@@ -103,7 +112,7 @@ export function composeSvelteComponentized(fields) {
 	return {
 		code,
 		data,
-		arrays,
+		arrays: arrays + vars,
 		add_icons
 	};
 }
