@@ -18,6 +18,7 @@ export function composeBulma(fields, { is_svelte = false, is_vue = false }) {
 		let id = 'b-' + Math.random().toString().slice(-4);
 
 		let attributes = '';
+		/** @type {string[]} */
 		let values = [];
 
 		Object.entries(f).forEach(([key, val]) => {

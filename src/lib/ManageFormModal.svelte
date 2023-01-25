@@ -9,7 +9,8 @@
 	export let is_update = false;
 
 	function makeField() {
-		/** @type { import("../typings/types").Field }*/
+		/** @typedef { import("../typings/types").Field } Field*/
+		/** @type Field*/
 		const field = {
 			id: Math.random(),
 
@@ -19,22 +20,21 @@
 			required: false,
 
 			size: null,
-
 			maxlength: null,
 			minlength: null,
 
-			max: null,
-			min: null,
-			step: null,
+			max: '',
+			min: '',
+			step: '',
 
 			rows: 10,
 			cols: 30,
 
-			accept: null,
-			// checked: null,
+			accept: '',
+			// checked: '',
 			multiple: false,
-			pattern: null,
-			placeholder: null
+			pattern: '',
+			placeholder: ''
 		};
 
 		return field;
@@ -120,7 +120,7 @@
 	</Toast>
 {/if}
 
-<form class="form alpha" on:submit|preventDefault={handleSubmit}>
+<form class="form  alpha " on:submit|preventDefault={handleSubmit}>
 	<div class="fsb header">
 		<h1>{is_update ? 'Update' : 'Compose'}</h1>
 

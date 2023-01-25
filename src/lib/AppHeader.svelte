@@ -9,7 +9,7 @@
 			<Name />
 		</div>
 
-		<Dropdown accent="base" iconOnly alignRight hoverable>
+		<Dropdown accent="base" iconOnly hoverable align="right">
 			<Icon name="brightness_low" slot="dropbtn" />
 			<ThemeSelect heading="Theme" />
 		</Dropdown>

@@ -1,7 +1,5 @@
 import ATTRS from '../../data/attrs';
 import toCamelCase from '../toCamelCase';
-const checkIcon = `<div class="icon-holder"><svg viewBox="0 0 24 24"><use href="#check"></use></svg></div>`;
-const circleIcon = `<div class="icon-holder round"><svg viewBox="0 0 24 24"><use href="#circle"></use></svg></div>`;
 
 /**
  * @param {import("../../typings/types").Field[]} fields
@@ -19,6 +17,7 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 		const _label = toCamelCase(f.label);
 
 		let attributes = '';
+		/** @type {string[]} */
 		let values = [];
 
 		Object.entries(f).forEach(([key, val]) => {
@@ -46,7 +45,7 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 
 		if (['checkbox', 'radio'].includes(f.type)) {
 			if (!add_icons) add_icons = true;
-			const icon = f.type === 'radio' ? circleIcon : checkIcon;
+			// const icon = f.type === 'radio' ? circleIcon : checkIcon;
 
 			if (is_plus) {
 				const arr = values.reduce((p, c) => p + `"${c}",`, '');
@@ -62,7 +61,6 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 					boxes = `{#each ${_label} as val, i}
 				<label>
 					<input ${props} type="${f.type}" value="{val}" ${attributes} name="${_label}"/>
-					${icon}
 					<div class="boxlabel">{val}</div>
 				</label>
 				{/each}`;
@@ -73,14 +71,13 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 
 					boxes = `<label v-for="(val, i) in ${_label}" :key="i">
 					<input ${props} type="${f.type}" :value="val" ${attributes} name="${_label}"/>
-					${icon}
 					<div class="boxlabel">{{val}}</div>
 				</label>`;
 				}
 
 				code += `
     <div class="field">
-      <i>${f.label}</i>
+      <b>${f.label}</b>
       <div class="boxfields rows">
         ${boxes}
       </div>
@@ -94,9 +91,8 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 			if (f.value) {
 				values.forEach((v) => {
 					boxes += `
-        <label>
+        <label class="boxfield">
           <input type="${f.type}" value="${v}" ${attributes} name="${_label}"/>
-          ${icon}
           <div class="boxlabel">${v}</div>
         </label>
         `;
@@ -105,7 +101,7 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 
 			code += `
     <div class="field">
-      <i>${f.label}</i>
+      <b>${f.label}</b>
       <div class="boxfields rows">
         ${boxes}
       </div>
@@ -139,7 +135,7 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 
 				code += `
 		<label class="field">
-			<i>${f.label}</i>
+			<b>${f.label}</b>
 			<select ${props} ${attributes}>
 				<option value="" selected></option>${options}
 			</select>
@@ -156,7 +152,7 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 
 			code += `
     <label class="field">
-      <i>${f.label}</i>
+      <b>${f.label}</b>
       <select${attributes} name="${_label}">
         <option value=""></option>${options}
       </select>
@@ -178,7 +174,7 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 		if (f.type == 'textarea') {
 			code += `
     <label class="field">
-      <i>${f.label}</i>
+      <b>${f.label}</b>
       <textarea ${props} ${attributes} name="${_label}"></textarea>
     </label>
     `;
@@ -188,7 +184,7 @@ export function composeKazkadien(fields, { is_svelte = false, is_vue = false }) 
 
 		code += `
     <label class="field">
-      <i>${f.label}</i>
+      <b>${f.label}</b>
       <input ${props} type="${f.type}"${attributes} name="${_label}"/>
     </label>
     `;

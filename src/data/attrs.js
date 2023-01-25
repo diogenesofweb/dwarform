@@ -230,7 +230,9 @@ const url = {
 	required: true
 };
 
-export default {
+// /** @type {Record<string, Attributes>} */
+/** @type {Record<import("../typings/types").InputType, Attributes>} */
+const attrs = {
 	select,
 	textarea,
 	checkbox,
@@ -246,3 +248,5 @@ export default {
 	tel,
 	url
 };
+
+export default attrs;

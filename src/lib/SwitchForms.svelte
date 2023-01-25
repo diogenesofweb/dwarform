@@ -1,7 +1,7 @@
 <script>
 	import { Field } from '@kazkadien/svelte';
 	import { onMount } from 'svelte';
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import example from '../data/example';
 
 	import { forms, activeForm, fields } from '../store/store';
@@ -30,7 +30,7 @@
 	}
 </script>
 
-<form class="form" on:submit|preventDefault>
+<form class="form v2" on:submit|preventDefault>
 	<Field label="My forms:">
 		<select bind:value={$activeForm}>
 			{#each $forms as val}

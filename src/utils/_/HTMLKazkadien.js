@@ -5,14 +5,11 @@ import ATTRS from '../../data/attrs';
  * @returns string
  */
 export function composeHTMLKazkadien(fields) {
-	const checkIcon = `<div class="icon-holder"><svg viewBox="0 0 24 24"><use href="#check"></use></svg></div>`;
-	const circleIcon = `<div class="icon-holder round"><svg viewBox="0 0 24 24"><use href="#circle"></use></svg></div>`;
-
-	let add_icons = false;
 	let code = '';
 
 	fields.forEach((f) => {
 		let attributes = '';
+		/** @type {string[]} */
 		let values = [];
 
 		Object.entries(f).forEach(([key, val]) => {
@@ -37,8 +34,6 @@ export function composeHTMLKazkadien(fields) {
 		});
 
 		if (['checkbox', 'radio'].includes(f.type)) {
-			add_icons = true;
-			const icon = f.type === 'radio' ? circleIcon : checkIcon;
 			let boxes = '';
 
 			if (f.value) {
@@ -46,7 +41,6 @@ export function composeHTMLKazkadien(fields) {
 					boxes += `
         <label class="box-field-entry">
           <input type="${f.type}" value="${v}" ${attributes}/>
-          ${icon}
           <div class="box-field-entry-mark">${v}</div>
         </label>
         `;
@@ -111,22 +105,6 @@ export function composeHTMLKazkadien(fields) {
 		info: '',
 		script: ''
 	};
-
-	if (add_icons) {
-		composedCode.info = `
-
-<-- Icons for checkbox & radio -->
-<svg id="all-icons" style="display: none">
-  <symbol id="check">
-    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
-  </symbol>
-
-  <symbol id="circle">
-    <circle cx="12" cy="12" r="8" />
-  </symbol>
-</svg>
-    `;
-	}
 
 	return composedCode;
 }

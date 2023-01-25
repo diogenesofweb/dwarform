@@ -18,7 +18,7 @@
 
 <div class="entry">
 	<div class="block top alpha">
-		<Field label="LABEL">
+		<Field label="Label">
 			<input class="f-label" type="text" bind:value={field.label} required />
 		</Field>
 

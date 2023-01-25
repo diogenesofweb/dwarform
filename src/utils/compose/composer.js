@@ -87,7 +87,7 @@ export function composer(fields, tech, styledBy) {
 		script += HTMLFormScript;
 	}
 
-	const classes = styledBy === 'Kazkadien' ? ' class="form alpha"' : '';
+	const classes = styledBy === 'Kazkadien' ? ' class="form v2 alpha"' : '';
 	const styles = styledBy === 'Kazkadien' ? ' style="display:grid;gap:2.5rem;"' : '';
 
 	let myForm = `<form id="my-form"${classes} ${props}>

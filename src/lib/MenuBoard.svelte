@@ -30,7 +30,7 @@
 	</Modal>
 {/if}
 
-<form class="form" on:submit|preventDefault>
+<form class="form v2" on:submit|preventDefault>
 	<div class="field-group">
 		<div class="selects">
 			<Field label="Tech">
@@ -56,7 +56,7 @@
 
 		{#if $tech === 'Svelte' && $styledBy === 'Kazkadien'}
 			<BoxField>
-				<BoxFieldEntry type="checkbox" label="componentize">
+				<BoxFieldEntry label="componentize">
 					<input type="checkbox" bind:checked={$componentize} />
 				</BoxFieldEntry>
 			</BoxField>

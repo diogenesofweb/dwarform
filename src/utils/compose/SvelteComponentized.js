@@ -14,6 +14,7 @@ export function composeSvelteComponentized(fields) {
 	fields.forEach((f) => {
 		const _label = f.label.toLocaleLowerCase().replaceAll(/[^a-z]/g, '_');
 		let attributes = '';
+		/** @type {string[]} */
 		let values = [];
 
 		Object.entries(f).forEach(([key, val]) => {
@@ -48,7 +49,7 @@ export function composeSvelteComponentized(fields) {
 			vars += `let ${_label} = ${f.type == 'radio' ? `""` : '[]'};\n`;
 
 			let boxes = `{#each  __${_label} as val}
-		<BoxFieldEntry type="${f.type}" label="{val}">
+		<BoxFieldEntry label="{val}">
 			<input type="${f.type}" ${attributes} bind:group="{${_label}}" value="{val}" />
 		</BoxFieldEntry>
 		{/each}`;

@@ -1,11 +1,10 @@
 /** @typedef { import("../typings/types").Field } Field*/
 import { derived, writable } from 'svelte/store';
-// import { browser } from '$app/env';
 import example from '../data/example';
 
 import { TECH, STYLEDBY } from '../data/constants';
 import { generateCode } from '../utils/generateCode';
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 
 const init = {
 	forms: ['example'],

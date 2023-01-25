@@ -20,7 +20,7 @@
 			{#if ['checkbox', 'radio'].includes(field.type)}
 				<BoxField label={field.label} rows>
 					{#each field.value.split(',') as val}
-						<BoxFieldEntry type={field.type === 'radio' ? 'radio' : 'checkbox'} label={val}>
+						<BoxFieldEntry label={val}>
 							<input
 								name={field.label.replaceAll(' ', '_')}
 								type={field.type === 'radio' ? 'radio' : 'checkbox'}
